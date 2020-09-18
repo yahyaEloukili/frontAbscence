@@ -1,0 +1,44 @@
+<div class="wrap">
+
+
+  <div class="wrapper">
+    <div class="title">Login Form</div>
+
+    <form [formGroup]="userForm" (ngSubmit)="saveLogin()">
+      <div class="alert alert-danger" *ngIf="errorForm || badCredentieals">
+        <span *ngIf="errorForm">Merci de verifier les champs<br></span>
+        <span *ngIf="badCredentieals">Bad credentiels</span>
+      </div>
+      <div class="field">
+        <input type="text" formControlName="email" (blur)="logValidationErrors()" required>
+        <label>Email Address</label>
+      </div>
+      <span id="span-fullName" *ngIf="formErrors.email" style="font-size: 12px;color: red;">
+        {{formErrors.email}}
+      </span>
+
+
+      <div class="field">
+        <input type="password" formControlName="password" (blur)="logValidationErrors()" required>
+        <label>Password</label>
+      </div>
+      <span id="span-fullName" *ngIf="formErrors.password" style="font-size: 12px;color: red;">
+        {{formErrors.password}}
+      </span>
+
+      <div class="content">
+
+        <div class="pass-link"><a href="#">Forgot password?</a></div>
+
+      </div>
+      <div class="field">
+        <input type="submit" value="Login">
+      </div>
+
+    </form>
+  </div>
+
+
+
+
+</div>

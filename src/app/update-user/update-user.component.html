@@ -1,0 +1,147 @@
+<div class="card">
+  <div class="card-header">Add user</div>
+  <div class="card-body">
+    <form #userform="ngForm" (ngSubmit)="submitUser(userform)">
+      <div class="alert alert-danger" *ngIf="verify || emailError">
+        <span *ngIf="verify">* Merci de verifier les champs<br></span>
+        <span *ngIf="emailError">* Un utilisateur avec cet email existe deja !</span>
+      </div>
+      <!-- Nom et prenom -->
+      <div class="form-row">
+        <!-- Default input -->
+        <div class="form-group col-md-6">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" placeholder="Nom" name="nom" [(ngModel)]="user.nom" #nom="ngModel"
+            [ngClass]="{
+            'is-invalid': (nom.errors && (nom.touched ||verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!nom.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+
+        </div>
+
+        <!-- Default input -->
+        <div class="form-group col-md-6">
+          <label for="prenom">prenom</label>
+          <input type="text" class="form-control" placeholder="prenom" name="prenom" [(ngModel)]="user.prenom"
+            #prenom="ngModel" [ngClass]="{
+            'is-invalid': (prenom.errors && (prenom.touched ||verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!prenom.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+        </div>
+      </div>
+
+      <!-- cne et email -->
+      <div class="form-row">
+        <!-- Default input -->
+        <div class="form-group col-md-6">
+          <label for="cne">cne</label>
+          <input type="text" class="form-control" placeholder="cne" name="cne" [(ngModel)]="user.cne" #cne="ngModel"
+            [ngClass]="{
+            'is-invalid': (cne.errors && (cne.touched || verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!cne.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+        </div>
+
+        <!-- Default input -->
+        <div class="form-group col-md-6">
+          <label for="email">email</label>
+          <input type="text" class="form-control" placeholder="email" name="email" [(ngModel)]="user.email"
+            #email="ngModel" [ngClass]="{
+            'is-invalid': (email.errors && (email.touched || verify))
+          }" required email>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!email.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!email.errors?.email ">
+            merci d'entrer un email valid
+          </span>
+        </div>
+      </div>
+      <!-- adress -->
+      <div class="form-group">
+        <label for="adress">adress</label>
+        <input type="text" class="form-control" placeholder="adress" name="adress" #adress="ngModel" [ngClass]="{
+          'is-invalid': (adress.errors && (adress.touched || verify))
+        }" required [(ngModel)]="user.adress">
+        <span id="span-fullName" class="invalid-feedback" [hidden]="!adress.errors?.required ">
+          Cette valeur est obligatoire
+        </span>
+      </div>
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Default input -->
+        <div class="form-group col-md-6">
+
+          <label for="role">role :</label>
+
+          <select class="form-control" name="roles_id" [(ngModel)]="user.roles_id" #roles_id="ngModel" [ngClass]="{
+            'is-invalid': (roles_id.errors && (roles_id.touched ||verify))
+          }" required>
+            <option value="">--select a role --</option>
+            <option *ngFor="let role of roles" [ngValue]="role.id">{{role.nom}}</option>
+          </select>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!roles_id.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+
+
+        </div>
+        <!-- Default input -->
+
+        <div class="form-group col-md-6">
+
+          <label for="role">gender :</label>
+          <div class="form-control" [ngClass]="{
+            'is-invalid': (gender.errors && (gender.touched || verify))
+          }">
+            male <input type="radio" value="male" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
+              #gender="ngModel" required>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;female <input type="radio" value="female"
+              name="gender" #gender="ngModel" [(ngModel)]="user.gender" required>
+          </div>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!gender.errors?.required">
+            Cette valeur est obligatoire
+          </span>
+
+        </div>
+        <div class="form-group col-md-6">
+          <label for="telephone">telephone</label>
+          <input type="text" class="form-control" placeholder="telephone" name="telephone" [(ngModel)]="user.telephone"
+            #telephone="ngModel" [ngClass]="{
+            'is-invalid': (telephone.errors && (telephone.touched || verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!telephone.errors?.required">
+            Cette valeur est obligatoire
+          </span>
+        </div>
+
+        <div class="form-group col-md-6">
+
+          <label for="role">Acces :</label>
+          <div class="form-control" [ngClass]="{
+            'is-invalid': (access.errors && (access.touched || verify))
+          }">
+            oui <input type="radio" name="access" [(ngModel)]="user.access" #access="ngModel" [value]="true"
+              #access="ngModel" required>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;non <input type="radio" [value]="false" name="access"
+              #access="ngModel" [(ngModel)]="user.access" required>
+          </div>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!access.errors?.required">
+            Cette valeur est obligatoire
+          </span>
+
+        </div>
+      </div>
+      <button type="submit" class="btn btn-md" style="background-color: #19B3D3;color: white;">Sign in</button>
+    </form>
+  </div>
+</div>
+
+<!-- Extended default form grid -->

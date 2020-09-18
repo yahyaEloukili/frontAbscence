@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "abscenceProject"
+    }
+  },
+  "defaultProject": "abscenceProject",
+  "cli": {
+    "analytics": false
+  }
 }
