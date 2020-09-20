@@ -21,17 +21,7 @@
 
         </div>
 
-        <!-- Default input -->
-        <div class="form-group col-md-6">
-          <label for="prenom">prenom</label>
-          <input type="text" class="form-control" placeholder="prenom" name="prenom" [(ngModel)]="user.prenom"
-            #prenom="ngModel" [ngClass]="{
-            'is-invalid': (prenom.errors && (prenom.touched ||verify))
-          }" required>
-          <span id="span-fullName" class="invalid-feedback" [hidden]="!prenom.errors?.required ">
-            Cette valeur est obligatoire
-          </span>
-        </div>
+
       </div>
 
       <!-- cne et email -->

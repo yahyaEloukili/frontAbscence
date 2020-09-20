@@ -1,6 +1,8 @@
 <div class="wrapper d-flex align-items-stretch">
 
-  <app-navbar *ngIf="loginService.isUserLoggedIn()"></app-navbar>
+  <app-navbar *ngIf="loginService.isAdmin()"></app-navbar>
+
+  <app-navbar-prof *ngIf="loginService.isProf()"></app-navbar-prof>
 
   <!-- Page Content  -->
   <div class="mx-auto" style="width: 80%;">

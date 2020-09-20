@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header">Add module</div>
+  <div class="card-body">
+    <form #moduleform="ngForm" (ngSubmit)="submitModule(moduleform)">
+      <div class="alert alert-danger" *ngIf="verify">
+        <span *ngIf="verify">* Merci de verifier les champs<br></span>
+
+      </div>
+      <!-- Nom et prenom -->
+      <div class="form-row">
+        <!-- Default input -->
+        <div class="form-group col-md-6">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" placeholder="Nom" name="nom" [(ngModel)]="module.nom" #nom="ngModel"
+            [ngClass]="{
+            'is-invalid': (nom.errors && (nom.touched ||verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!nom.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+
+        </div>
+
+
+      </div>
+
+      <button type="submit" class="btn btn-md" style="background-color: #19B3D3;color: white;">Sign in</button>
+    </form>
+  </div>
+</div>
+
+<!-- Extended default form grid -->

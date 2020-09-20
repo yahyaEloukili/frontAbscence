@@ -35,8 +35,12 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
-    if (this.loginService.isUserLoggedIn()) {
+    if (this.loginService.isAdmin()) {
       this.router.navigateByUrl("/administrateurs")
+    }
+    if (this.loginService.isProf()) {
+
+      this.router.navigateByUrl("/sceances")
     }
     this.userForm = this.fb.group({
 
@@ -59,8 +63,12 @@ export class LoginComponent implements OnInit {
 
         let jwt = resp.headers.get('Authorization');
         this.loginService.saveToken(jwt);
-
-        this.router.navigateByUrl('/administrateurs');
+        if (this.loginService.isAdmin) {
+          this.router.navigateByUrl('/administrateurs');
+        }
+        if (this.loginService.isProf()) {
+          this.router.navigateByUrl('/sceances');
+        }
       }, err => {
         this.badCredentieals = true;
       })

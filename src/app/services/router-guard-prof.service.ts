@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RouteGuardService implements CanActivate {
+export class RouterGuardProfService {
 
   constructor(private loginService: LoginService, private router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | import("@angular/router").UrlTree | import("rxjs").Observable<boolean | import("@angular/router").UrlTree> | Promise<boolean | import("@angular/router").UrlTree> {
-    if (this.loginService.isAdmin()) {
+    if (this.loginService.isProf()) {
 
       return true;
     } else {
-      console.log('error');
+
       this.router.navigateByUrl("/login");
       return false;
     }
   }
-
 
 
 }

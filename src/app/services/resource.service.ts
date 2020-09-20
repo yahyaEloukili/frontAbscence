@@ -9,10 +9,7 @@ export class ResourceService {
 
   url = 'http://localhost:8080';
   constructor(private http: HttpClient, private loginService: LoginService) { }
-  getResource(resource: string, page?, size?) {
 
-    return this.http.get(`${this.url}/${resource}?page=${page}&size=${size}`);
-  }
   getRoles() {
     return this.http.get(`${this.url}/roles`);
   }
@@ -31,8 +28,18 @@ export class ResourceService {
   register(resource: string, user) {
     return this.http.post(`${this.url}/${resource}`, user);
   }
+  addResource(resource: String, data) {
+    return this.http.post(`${this.url}/${resource}`, data);
+  }
   updateUser(resource: string, user) {
     return this.http.put(`${this.url}/${resource}`, user);
+  }
+  getModule(resource: string, page?, size?, keyword?: string) {
+    if (keyword) {
+      return this.http.get(`${this.url}/${resource}/search/moduleByKeyWord?page=${page}&size=${size}&nom=${keyword}`);
+    } else {
+      return this.http.get(`${this.url}/${resource}?page=${page}&size=${size}`);
+    }
   }
   public getResourceByRole(resource, page: number, size: number, id: string, nom?: string) {
 

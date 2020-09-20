@@ -16,6 +16,10 @@ import { EtudiantsComponent } from './etudiants/etudiants.component';
 import { ProfsComponent } from './profs/profs.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { NavbarProfComponent } from './navbar-prof/navbar-prof.component';
+import { SceancesComponent } from './sceances/sceances.component';
+import { ModulesComponent } from './modules/modules.component';
+import { AddModuleComponent } from './add-module/add-module.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     EtudiantsComponent,
     ProfsComponent,
     CreateUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    NavbarProfComponent,
+    SceancesComponent,
+    ModulesComponent,
+    AddModuleComponent
   ],
   imports: [
     BrowserModule,
