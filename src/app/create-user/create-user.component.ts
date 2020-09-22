@@ -38,7 +38,7 @@ export class CreateUserComponent implements OnInit {
   }
   ngOnInit(): void {
     this.array = [];
-    this.resourceService.getALllModules().subscribe(data => {
+    this.resourceService.getAllResource("courses").subscribe(data => {
       // console.log(data['_embedded'].courses);
 
       this.dropdownList = data['_embedded'].courses
@@ -67,7 +67,7 @@ export class CreateUserComponent implements OnInit {
 
       }
     })
-    this.resourceService.getRoles().subscribe(roles => {
+    this.resourceService.getAllResource("roles").subscribe(roles => {
       this.roles = roles["_embedded"].roles;
     })
   }
@@ -106,7 +106,7 @@ export class CreateUserComponent implements OnInit {
     useform.value.roles_id = Array.from(String(useform.value.roles_id));
     useform.value.courses_id = this.array;
     if (useform.valid) {
-      this.resourceService.register("register", useform.value).subscribe((userform) => {
+      this.resourceService.addResource("register", useform.value).subscribe((userform) => {
         this.emailError = false;
         this.verify = false;
         console.log(userform);

@@ -40,7 +40,7 @@ export class UpdateUserComponent implements OnInit {
 
   async ngOnInit(): Promise<any> {
 
-    this.resourceService.getALllModules().subscribe(async data => {
+    this.resourceService.getAllResource("courses").subscribe(async data => {
 
       let modules = await this.resourceService.getModulesOfUser(this.id)
 
@@ -77,7 +77,7 @@ export class UpdateUserComponent implements OnInit {
     this.id = this.route.snapshot.params["id"];
     this.resourceService.getResourceById("utilisateurs", this.id).subscribe(
       (data) => {
-        this.resourceService.getResourceById2("utilisateurs", this.id).subscribe(data => {
+        this.resourceService.getResourcesOfResource("utilisateurs", "roles", this.id).subscribe(data => {
 
           this.user.roles_id = data['_embedded'].roles[0].id
 
@@ -89,7 +89,7 @@ export class UpdateUserComponent implements OnInit {
       }
     );
 
-    this.resourceService.getRoles().subscribe(roles => {
+    this.resourceService.getAllResource("roles").subscribe(roles => {
       this.roles = roles["_embedded"].roles;
     })
   }
@@ -132,7 +132,7 @@ export class UpdateUserComponent implements OnInit {
     this.user = useform.value;
     this.user.id = this.id;
     if (useform.valid) {
-      this.resourceService.updateUser("updateUser", this.user).subscribe(() => {
+      this.resourceService.updateResource("updateUser", this.user).subscribe(() => {
         this.emailError = false;
         this.verify = false;
         useform.reset();
