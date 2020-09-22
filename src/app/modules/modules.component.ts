@@ -10,7 +10,7 @@ import { ResourceService } from '../services/resource.service';
   styleUrls: ['./modules.component.css']
 })
 export class ModulesComponent implements OnInit {
-  size = 6;
+  size = 5;
   page = 0;
   totalPages;
   currentKeyword;
@@ -44,10 +44,11 @@ export class ModulesComponent implements OnInit {
 
     this.resourceService.getModule("courses", this.page, this.size, this.currentKeyword).subscribe(data => {
 
-      this.totalPages = data["totalPages"];
+      this.totalPages = data["page"].totalPages;
       this.pages = new Array<number>(this.totalPages);
+
       this.utilisateurs = data["_embedded"].courses;
-      console.log(this.utilisateurs);
+
 
     }, err => {
       if (err.status === 403 || !localStorage.getItem('token')) {
@@ -59,17 +60,15 @@ export class ModulesComponent implements OnInit {
   }
   delete(id) {
     if (confirm("tu est sur de vouloir supprimer cet élement")) {
-      this.resourceService.deleteResource("modules", id).subscribe(() => {
+      this.resourceService.deleteResource("courses", id).subscribe(() => {
 
         this.filtrerUtilisateurs();
-        console.log(this.page);
+
       }
       );
-
-
-
     }
-
-
+  }
+  update(id) {
+    this.router.navigate([`/updtaeModule/${id}`]);
   }
 }

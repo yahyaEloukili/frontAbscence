@@ -69,8 +69,7 @@
         <label for=""> les modules:</label>
         <ng-multiselect-dropdown style="width: 50%;" placeholder="Choisir les modules" [(ngModel)]="selectedItems"
           [settings]="dropdownSettings" [data]="dropdownList" name="model" (onSelect)="onSelect($event)"
-          (onDeSelect)="ondeSelect($event)" (onSelectAll)="onsSelectAll($event)"
-          (onDeSelectAll)="ondeSelectAll($event)">
+          (onSelectAll)="onsSelectAll($event)" (onDeSelectAll)="ondeSelectAll($event)">
         </ng-multiselect-dropdown>
 
       </div>

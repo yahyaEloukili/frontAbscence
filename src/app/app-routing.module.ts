@@ -14,6 +14,7 @@ import { SceancesComponent } from './sceances/sceances.component';
 import { RouterGuardProfService } from "./services/router-guard-prof.service";
 import { AddModuleComponent } from './add-module/add-module.component';
 import { ModulesComponent } from './modules/modules.component';
+import { UpdateModuleComponent } from './update-module/update-module.component';
 
 const routes: Routes = [
   { component: LoginComponent, path: "login" },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { component: ProfsComponent, path: "profs", canActivate: [RouteGuardService] },
   { component: CreateUserComponent, path: "ajoutUtilisateur", canActivate: [RouteGuardService] },
   { component: UpdateUserComponent, path: "updtaeUtilisateur/:id", canActivate: [RouteGuardService] },
+  { component: UpdateModuleComponent, path: "updtaeModule/:id", canActivate: [RouteGuardService] },
   { component: SceancesComponent, path: "sceances", canActivate: [RouterGuardProfService] },
   { component: ModulesComponent, path: "modules", canActivate: [RouteGuardService] },
   { component: AddModuleComponent, path: "addModule", canActivate: [RouteGuardService] },

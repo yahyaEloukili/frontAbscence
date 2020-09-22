@@ -84,7 +84,7 @@ export class CreateUserComponent implements OnInit {
     });
 
   }
-  ondeSelectAll() {
+  ondeSelectAll(ev) {
     this.array = [];
   }
   ondeSelect(ev) {

@@ -55,6 +55,9 @@ export class ProfsComponent implements OnInit {
       }
     })
   }
+  update(id) {
+    this.router.navigate([`/updtaeUtilisateur/${id}`]);
+  }
 
   delete(id) {
     if (confirm("tu est sur de vouloir supprimer cet élement")) {

@@ -69,4 +69,7 @@ export class AministrateursComponent implements OnInit {
 
 
   }
+  update(id) {
+    this.router.navigate([`/updtaeUtilisateur/${id}`]);
+  }
 }

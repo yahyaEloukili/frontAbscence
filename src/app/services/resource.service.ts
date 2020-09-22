@@ -29,8 +29,12 @@ export class ResourceService {
   addResource(resource: String, data) {
     return this.http.post(`${this.url}/${resource}`, data);
   }
-  updateResource(resource: string, user) {
-    return this.http.put(`${this.url}/${resource}`, user);
+  updateResource(resource: string, data, id?) {
+    if (id) {
+      return this.http.put(`${this.url}/${resource}/${id}`, data);
+    } else {
+      return this.http.put(`${this.url}/${resource}`, data);
+    }
   }
   getModule(resource: string, page?, size?, keyword?: string) {
     if (keyword) {

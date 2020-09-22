@@ -21,6 +21,7 @@ import { SceancesComponent } from './sceances/sceances.component';
 import { ModulesComponent } from './modules/modules.component';
 import { AddModuleComponent } from './add-module/add-module.component';
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { UpdateModuleComponent } from './update-module/update-module.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
     NavbarProfComponent,
     SceancesComponent,
     ModulesComponent,
-    AddModuleComponent
+    AddModuleComponent,
+    UpdateModuleComponent
   ],
   imports: [
     BrowserModule,
