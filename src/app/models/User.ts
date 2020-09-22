@@ -8,6 +8,7 @@ export interface User {
   gender: string,
   cne: string,
   roles_id: any,
+  courses_id: any,
   access: boolean
 
 }

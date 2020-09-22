@@ -29,8 +29,41 @@ export class UpdateUserComponent implements OnInit {
   clicked: boolean;
   emailError: boolean = false;
   id;
+  array: any[] = [];
+  dropdownList: any;
+  selectedItems: any;
+  dropdownSettings: {
+    singleSelection: boolean; idField: string; textField: string; selectAllText: string; unSelectAllText: string;
+    // itemsShowLimit: ,
+    allowSearchFilter: boolean;
+  };
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<any> {
+
+    this.resourceService.getALllModules().subscribe(async data => {
+
+      let modules = await this.resourceService.getModulesOfUser(this.id)
+
+      this.selectedItems = modules['_embedded'].courses
+      this.selectedItems.forEach(element => {
+        this.array.push(element.id)
+      });
+
+      this.dropdownList = data['_embedded'].courses
+
+      this.dropdownSettings = {
+        singleSelection: false,
+        idField: 'id',
+        textField: 'nom',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        // itemsShowLimit: ,
+        allowSearchFilter: true
+      };
+
+
+
+    })
     this.resourceService.getResourceByRole("utilisateurs", 0, 2, "1").subscribe(data => {
 
 
@@ -47,7 +80,7 @@ export class UpdateUserComponent implements OnInit {
         this.resourceService.getResourceById2("utilisateurs", this.id).subscribe(data => {
 
           this.user.roles_id = data['_embedded'].roles[0].id
-          console.log(data['_embedded'].roles[0].id);
+
         })
         this.user = data;
 
@@ -63,9 +96,39 @@ export class UpdateUserComponent implements OnInit {
   constructor(private resourceService: ResourceService, private route: ActivatedRoute, private loginService: LoginService, private router: Router) {
 
   }
+  onSelect(ev) {
+
+    this.array.push(ev.id);
+    console.log(this.array);
+
+  }
+  ondeSelectAll(ev) {
+    this.array = [];
+  }
+  onsSelectAll(ev) {
+    this.array = [];
+    ev.forEach(element => {
+      this.array.push(element.id);
+    });
+
+  }
+  ondeSelect(ev) {
+
+    let array2 = [];
+    this.array.forEach(element => {
+
+      if (element != ev.id) {
+        array2.push(element);
+      }
+    })
+    this.array = array2;
+
+
+  }
   submitUser(useform: NgForm) {
 
     useform.value.roles_id = Array.from(String(useform.value.roles_id));
+    useform.value.courses_id = this.array;
     this.user = useform.value;
     this.user.id = this.id;
     if (useform.valid) {

@@ -41,6 +41,14 @@ export class ResourceService {
       return this.http.get(`${this.url}/${resource}?page=${page}&size=${size}`);
     }
   }
+  getModulesOfUser(id): Promise<any> {
+
+    return this.http.get(`${this.url}/utilisateurs/${id}/cours`).toPromise();
+
+  }
+  getALllModules() {
+    return this.http.get(`${this.url}/courses`)
+  }
   public getResourceByRole(resource, page: number, size: number, id: string, nom?: string) {
 
     if (nom) {

@@ -20,17 +20,20 @@ export class AddModuleComponent implements OnInit {
 
   verify: boolean = false;
   clicked: boolean;
+  duplicate: boolean;
 
   ngOnInit(): void {
     this.resourceService.getResourceByRole("utilisateurs", 0, 2, "1").subscribe(data => {
 
 
     }, err => {
+
       if (err.status === 403 || !localStorage.getItem('token')) {
         this.loginService.logout();
         this.router.navigateByUrl("/login");
 
       }
+
     })
 
   }
@@ -45,9 +48,14 @@ export class AddModuleComponent implements OnInit {
       this.resourceService.addResource("courses", useform.value).subscribe(() => {
 
         this.verify = false;
+        this.duplicate = false;
         useform.reset();
 
       }, err => {
+        if (err.error.cause.cause.message.startsWith('Duplicate entry')) {
+          this.duplicate = true;
+          this.verify = false;
+        }
 
       });
 

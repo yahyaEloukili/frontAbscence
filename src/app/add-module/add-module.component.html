@@ -1,6 +1,9 @@
 <div class="card">
   <div class="card-header">Add module</div>
   <div class="card-body">
+    <div class="alert alert-danger" *ngIf="duplicate">
+      <span>module already exist with this name</span>
+    </div>
     <form #moduleform="ngForm" (ngSubmit)="submitModule(moduleform)">
       <div class="alert alert-danger" *ngIf="verify">
         <span *ngIf="verify">* Merci de verifier les champs<br></span>

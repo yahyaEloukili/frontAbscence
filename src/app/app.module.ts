@@ -20,6 +20,7 @@ import { NavbarProfComponent } from './navbar-prof/navbar-prof.component';
 import { SceancesComponent } from './sceances/sceances.component';
 import { ModulesComponent } from './modules/modules.component';
 import { AddModuleComponent } from './add-module/add-module.component';
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { AddModuleComponent } from './add-module/add-module.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-
+    NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule

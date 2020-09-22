@@ -24,6 +24,7 @@
     "angular2-jwt": "^0.2.3",
     "jquery": "^3.5.1",
     "ng-media-query": "^1.0.3",
+    "ng-multiselect-dropdown": "^0.2.10",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.6.3",
     "tslib": "^2.0.0",
