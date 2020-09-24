@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
   saveLogin() {
     this.errorForm = false;
     this.badCredentieals = false;
-    console.log(this.userForm.value);
+
     if (this.userForm.valid) {
 
       this.loginService.authenticate(this.userForm.value).subscribe(resp => {
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
 
   }
   logValidationErrors(group: FormGroup = this.userForm) {
-    console.log("object");
+
     Object.keys(group.controls).forEach((key => {
       let abstratControl = group.get(key);
       if (abstratControl instanceof FormGroup) {

@@ -10,7 +10,7 @@ import { ResourceService } from '../services/resource.service';
   styleUrls: ['./profs.component.css']
 })
 export class ProfsComponent implements OnInit {
-  size = 7;
+  size = 5;
   page = 0;
   totalPages;
   currentKeyword;
@@ -56,7 +56,7 @@ export class ProfsComponent implements OnInit {
     })
   }
   update(id) {
-    this.router.navigate([`/updtaeUtilisateur/${id}`]);
+    this.router.navigate([`/updateUtilisateur/${id}`]);
   }
 
   delete(id) {

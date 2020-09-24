@@ -1,1 +1,26 @@
-<p>sceances works!</p>
+<div class="table-responsive">
+  <table *ngIf="courses" class="table table-sm table-bordered bg-white">
+    <thead>
+      <th style="width: 65%;">Mes modules</th>
+
+
+    </thead>
+    <tbody>
+      <tr *ngFor=" let course of courses">
+        <td>{{course.nom}}</td>
+
+
+      </tr>
+
+    </tbody>
+    <tbody *ngIf="!courses || courses.length === 0">
+      <tr>
+        <td colspan="5">
+          No users
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>

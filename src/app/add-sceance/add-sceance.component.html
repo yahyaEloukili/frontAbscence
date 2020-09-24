@@ -1,0 +1,72 @@
+<div class="card">
+  <div class="card-header">Add module</div>
+  <div class="card-body">
+
+    <form #moduleform="ngForm" class="" (ngSubmit)="submitModule(moduleform)">
+
+      <!-- Nom et prenom -->
+      <div class="form-row">
+        <!-- Default input -->
+        <div class="form-group m-auto col-md-6">
+          <div class="alert alert-danger" *ngIf="verify || duplicate">
+            <span *ngIf="verify">* Merci de verifier les champs<br></span>
+            <span *ngIf="duplicate">module already exist with this name</span>
+
+          </div>
+          <label for="date">Date</label>
+          <input type="date" class="form-control" placeholder="Date" name="date" [(ngModel)]="sceance.date"
+            #date="ngModel" [ngClass]="{
+            'is-invalid': (date.errors && (date.touched ||verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!date.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+
+          <label for="debut">debut</label>
+          <input type="time" class="form-control" placeholder="debut" name="debut" [(ngModel)]="sceance.debut"
+            #debut="ngModel" [ngClass]="{
+            'is-invalid': (debut.errors && (debut.touched ||verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!date.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+
+          <label for="fin">fin</label>
+          <input type="time" class="form-control" placeholder="fin" name="fin" [(ngModel)]="sceance.fin" #fin="ngModel"
+            [ngClass]="{
+            'is-invalid': (fin.errors && (fin.touched ||verify))
+          }" required>
+          <span id="span-fullName" class="invalid-feedback" [hidden]="!fin.errors?.required ">
+            Cette valeur est obligatoire
+          </span>
+
+
+
+          <!-- Default input -->
+
+
+          <label for="role">role :</label>
+
+          <select class="form-control" name="cours" [(ngModel)]="cours" required>
+            <option value="">--select a course --</option>
+            <option *ngFor="let cours of courses" [ngValue]="cours.id">{{cours.nom}}</option>
+          </select>
+          <!-- <span id="span-fullName" class="invalid-feedback" [hidden]="!cours.errors?.required ">
+            Cette valeur est obligatoire
+          </span> -->
+
+
+
+
+          <button type="text" class="btn btn-sm  mt-3" style="background-color: #19B3D3;color: white;">Add
+            module</button>
+        </div>
+
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- Extended default form grid -->

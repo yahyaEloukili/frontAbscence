@@ -1,0 +1,6 @@
+<form #form="ngForm" (ngSubmit)="search(form)">
+  <input type="date" name="date" [(ngModel)]="date">
+  <input type="time" name="debut" [(ngModel)]="debut">
+  <input type="time" name="fin" [(ngModel)]="fin">
+  <button type="submit">submit</button>
+</form>

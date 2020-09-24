@@ -53,6 +53,11 @@ export class LoginService {
       return false;
     }
   }
+  getLoggedInUser() {
+    this.jwtToken = localStorage.getItem("token");
+    let jwtHelper = new JwtHelper();
+    return jwtHelper.decodeToken(this.jwtToken);
+  }
   isEtudiant() {
     this.jwtToken = localStorage.getItem("token");
     let jwtHelper = new JwtHelper();

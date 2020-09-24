@@ -128,11 +128,18 @@ export class UpdateUserComponent implements OnInit {
   submitUser(useform: NgForm) {
 
     useform.value.roles_id = Array.from(String(useform.value.roles_id));
+    useform.value.roles = [`${this.loginService.host}/roles/${useform.value.roles_id}`]
+    useform.value.cours = [];
     useform.value.courses_id = this.array;
+    this.array.forEach(element => {
+      useform.value.cours.push(`${this.loginService.host}/cours/${element}`)
+    })
+    console.log(useform.value.cours);
+    console.log(useform.value.roles);
     this.user = useform.value;
-    this.user.id = this.id;
+    // this.user.id = this.id;
     if (useform.valid) {
-      this.resourceService.updateResource("updateUser", this.user).subscribe(() => {
+      this.resourceService.updateResource("utilisateurs", this.user, this.id).subscribe(() => {
         this.emailError = false;
         this.verify = false;
         useform.reset();

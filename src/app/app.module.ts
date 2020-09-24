@@ -22,6 +22,8 @@ import { ModulesComponent } from './modules/modules.component';
 import { AddModuleComponent } from './add-module/add-module.component';
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { UpdateModuleComponent } from './update-module/update-module.component';
+import { AddSceanceComponent } from './add-sceance/add-sceance.component';
+import { AbscencesComponent } from './abscences/abscences.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { UpdateModuleComponent } from './update-module/update-module.component';
     SceancesComponent,
     ModulesComponent,
     AddModuleComponent,
-    UpdateModuleComponent
+    UpdateModuleComponent,
+    AddSceanceComponent,
+    AbscencesComponent
   ],
   imports: [
     BrowserModule,
