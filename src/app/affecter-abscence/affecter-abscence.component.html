@@ -1,0 +1,14 @@
+<form #userform="ngForm" (ngSubmit)="submit(userform)">
+
+  <div class="form-group col-md-6">
+
+    <label for="justified">justifié :</label>
+    <div class="form-control">
+      oui <input type="radio" value="oui" name="justified" [(ngModel)]="justified">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      non <input type="radio" value="non" name="justified" [(ngModel)]="justified">
+    </div>
+    <button type="submit">valider</button>
+  </div>
+
+</form>

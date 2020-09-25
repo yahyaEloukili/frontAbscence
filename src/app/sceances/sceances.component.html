@@ -24,3 +24,74 @@
   </table>
 
 </div>
+<div class="card">
+  <div class="card-header grey lighten-4">
+    <h2 class="mt-3 mb-2">Sceances</h2>
+  </div>
+  <div class="card-body">
+
+    <!-- Search form -->
+
+
+
+    <div class="table-responsive">
+      <table *ngIf="sceances" class="table table-sm table-bordered bg-white">
+        <thead>
+          <th>Module</th>
+          <th>Date de sceance</th>
+          <th>Debut de sceance</th>
+          <th>Fin de sceance</th>
+          <th></th>
+
+        </thead>
+        <tbody>
+          <tr *ngFor=" let utilisateur of sceances">
+            <td>{{utilisateur["cours"].nom}}</td>
+            <td>{{utilisateur.date}}</td>
+            <td>{{utilisateur.debut}}</td>
+            <td>{{utilisateur.fin}}</td>
+
+            <td><button class="btn btn-sm  btn-danger text-white" (click)="delete(utilisateur.id)">Delete</button>
+            </td>
+
+
+          </tr>
+
+        </tbody>
+        <tbody *ngIf="!sceances || sceances.length === 0">
+          <tr>
+            <td colspan="5">
+              No users
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <ul *ngIf="pages" class="nav nav-pills mt-2">
+      <li *ngIf="page!==0" class="page-item bg-white">
+        <a *ngIf="page!==0" class="page-link" (click)="goToPage(page-1)">Previous</a>
+
+      </li>
+      <li *ngIf="page==0" class="page-item disabled bg-white">
+        <a class="nav-link">Previous</a>
+
+      </li>
+      <li class="clickable nav-item" *ngFor="let p of pages;let i = index">
+        <a [ngClass]="i==page? 'blue lighten-1 text-white' : 'bg-white text-dark'" class="nav-link"
+          (click)="goToPage(i)">{{i}}</a>
+
+      </li>
+      <li *ngIf="page!==pages.length-1" class="page-item grey  bg-white">
+        <a *ngIf="page!==pages.length-1" class="page-link" (click)="goToPage(page+1)">Next</a>
+
+      </li>
+      <li *ngIf="page==pages.length-1" class="page-item disabled bg-white">
+        <a class="nav-link">Next</a>
+
+      </li>
+    </ul>
+
+  </div>
+</div>

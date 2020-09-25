@@ -49,7 +49,7 @@ export class EtudiantsComponent implements OnInit {
 
   }
   update(id) {
-    this.router.navigate([`/updtaeUtilisateur/${id}`]);
+    this.router.navigate([`/updateUtilisateur/${id}`]);
   }
 
   goToPage(i) {

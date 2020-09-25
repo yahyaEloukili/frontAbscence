@@ -17,6 +17,7 @@ import { ModulesComponent } from './modules/modules.component';
 import { AddSceanceComponent } from "./add-sceance/add-sceance.component";
 import { UpdateModuleComponent } from './update-module/update-module.component';
 import { AbscencesComponent } from './abscences/abscences.component';
+import { AffecterAbscenceComponent } from './affecter-abscence/affecter-abscence.component';
 
 const routes: Routes = [
   { component: LoginComponent, path: "login" },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { component: AbscencesComponent, path: "abscences", canActivate: [RouterGuardProfService] },
   { component: ModulesComponent, path: "modules", canActivate: [RouteGuardService] },
   { component: AddModuleComponent, path: "addModule", canActivate: [RouteGuardService] },
+  { component: AffecterAbscenceComponent, path: "affecterAbscence/:id1/:id2", canActivate: [RouterGuardProfService] },
 ];
 
 @NgModule({

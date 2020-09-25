@@ -1,6 +1,110 @@
-<form #form="ngForm" (ngSubmit)="search(form)">
-  <input type="date" name="date" [(ngModel)]="date">
-  <input type="time" name="debut" [(ngModel)]="debut">
-  <input type="time" name="fin" [(ngModel)]="fin">
-  <button type="submit">submit</button>
-</form>
+<div class="card">
+
+  <div class="card-header">Chercher sceance</div>
+  <div class="card-body">
+    <form #form="ngForm" (ngSubmit)="search(form)">
+      <div class="row">
+        <div class="col">
+          <label>Date de sceance</label><br>
+          <input type="date" name="date" [(ngModel)]="date">
+        </div>
+        <div class="col">
+          <label>Heure de debut</label><br>
+          <input type="time" name="debut" [(ngModel)]="debut">
+        </div>
+        <div class="col">
+          <label>Heure de fin</label><br>
+          <input type="time" name="fin" [(ngModel)]="fin">
+        </div>
+        <div class="col">
+          <br>
+          <button type="submit" class="btn btn-sm btn-primary text-white">Chearcher</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>
+<div class="card mt-2" *ngIf="sceance">
+
+  <div class="card-header">Infos sur la sceance</div>
+  <div class="card-body">
+    <table class="table table-sm table-bordered bg-white">
+      <thead>
+        <th>Module</th>
+        <th>Date de sceance</th>
+        <th>Debut</th>
+        <th>Fin</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{sceance?.cours.nom}}</td>
+          <td>{{sceance?.date}}</td>
+          <td>{{sceance?.debut}}</td>
+          <td>{{sceance?.fin}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+
+<div class="card mt-2" *ngIf="sceance">
+
+  <div class="card-header">Les etudiants</div>
+  <div class="card-body">
+    <table *ngIf="etudiants" class="table table-sm table-bordered bg-white w-auto">
+      <thead>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Telephone</th>
+        <th>Address</th>
+
+
+      </thead>
+      <tbody>
+        <tr *ngFor=" let etudiant of etudiants">
+          <td>{{etudiant.nom}}</td>
+          <td>{{etudiant.prenom}}</td>
+          <td>{{etudiant.email}}</td>
+
+          <td>{{etudiant.telephone}}</td>
+          <td>{{etudiant.adress}}</td>
+
+
+
+
+        </tr>
+
+      </tbody>
+    </table>
+    <ul *ngIf="pages" class="nav nav-pills mt-2">
+      <li *ngIf="page!==0" class="page-item bg-white">
+        <a *ngIf="page!==0" class="page-link" (click)="goToPage(page-1)">Previous</a>
+
+      </li>
+      <li *ngIf="page==0" class="page-item disabled bg-white">
+        <a class="nav-link">Previous</a>
+
+      </li>
+      <li class="clickable nav-item" *ngFor="let p of pages;let i = index">
+        <a [ngClass]="i==page? 'blue lighten-1 text-white' : 'bg-white text-dark'" class="nav-link"
+          (click)="goToPage(i)">{{i}}</a>
+
+      </li>
+      <li *ngIf="page!==pages.length-1" class="page-item grey  bg-white">
+        <a *ngIf="page!==pages.length-1" class="page-link" (click)="goToPage(page+1)">Next</a>
+
+      </li>
+      <li *ngIf="page==pages.length-1" class="page-item disabled bg-white">
+        <a class="nav-link">Next</a>
+
+      </li>
+    </ul>
+  </div>
+
+</div>

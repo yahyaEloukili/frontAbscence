@@ -68,5 +68,21 @@ export class ResourceService {
       return this.http.get(`${this.url}/v2/roles/${id}/${resource}?page=${page}&size=${size}`);
     }
   }
+  public getSceancesByUser(page: number, size: number, id: string) {
+
+
+
+    return this.http.get(`${this.url}/v2/utilisateurs/${id}/sceances?page=${page}&size=${size}`);
+
+  }
+  public getResourceByCourse(resource, page: number, size: number, id: string, nom?: string) {
+
+    if (nom) {
+      return this.http.get(`${this.url}/v2/courses/${id}/${resource}?page=${page}&size=${size}&nom=${nom}`);
+    } else {
+      console.log("object");
+      return this.http.get(`${this.url}/v2/courses/${id}/${resource}?page=${page}&size=${size}`);
+    }
+  }
 
 }
